@@ -15,8 +15,10 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
-import InboxIcon from '@mui/icons-material/MoveToInbox';
-import MailIcon from '@mui/icons-material/Mail';
+import PublicIcon from '@mui/icons-material/Public';
+import GroupIcon from '@mui/icons-material/Group';
+import ForwardToInboxIcon from '@mui/icons-material/ForwardToInbox';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import Card from "./Card"
 
 const drawerWidth = 240;
@@ -117,7 +119,7 @@ export default function MiniDrawer() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" noWrap component="div">
-            AppSoporte
+            AppSupport
           </Typography>
         </Toolbar>
       </AppBar>
@@ -129,9 +131,9 @@ export default function MiniDrawer() {
         </DrawerHeader>
         <Divider />
         <List>
-          {['Inbox', 'Starred', 'Send email', 'Drafts'].map((text, index) => (
-            <ListItemButton
-              key={text}
+
+          {/* Instancias */}
+        <ListItemButton              
               sx={{
                 minHeight: 48,
                 justifyContent: open ? 'initial' : 'center',
@@ -145,11 +147,72 @@ export default function MiniDrawer() {
                   justifyContent: 'center',
                 }}
               >
-                {index % 2 === 0 ? <InboxIcon /> : <MailIcon />}
+                <PublicIcon  /> 
               </ListItemIcon>
-              <ListItemText primary={text} sx={{ opacity: open ? 1 : 0 }} />
+              <ListItemText primary={"Instancias"} sx={{ opacity: open ? 1 : 0 }} />
             </ListItemButton>
-          ))}
+
+             {/* Crear instancia */}
+             <ListItemButton              
+              sx={{
+                minHeight: 48,
+                justifyContent: open ? 'initial' : 'center',
+                px: 2.5,
+              }}
+            >
+              <ListItemIcon
+                sx={{
+                  minWidth: 0,
+                  mr: open ? 3 : 'auto',
+                  justifyContent: 'center',
+                }}
+              >
+                <AddCircleOutlineIcon /> 
+              </ListItemIcon>
+              <ListItemText primary={"Crear instancia"} sx={{ opacity: open ? 1 : 0 }} />
+            </ListItemButton>
+
+            {/* Nosotros */}
+            <ListItemButton              
+              sx={{
+                minHeight: 48,
+                justifyContent: open ? 'initial' : 'center',
+                px: 2.5,
+              }}
+            >
+              <ListItemIcon
+                sx={{
+                  minWidth: 0,
+                  mr: open ? 3 : 'auto',
+                  justifyContent: 'center',
+                }}
+              >
+                <GroupIcon  /> 
+              </ListItemIcon>
+              <ListItemText primary={"Nosotros"} sx={{ opacity: open ? 1 : 0 }} />
+            </ListItemButton>
+
+            {/* Contactanos */}
+            <ListItemButton              
+              sx={{
+                minHeight: 48,
+                justifyContent: open ? 'initial' : 'center',
+                px: 2.5,
+              }}
+            >
+              <ListItemIcon
+                sx={{
+                  minWidth: 0,
+                  mr: open ? 3 : 'auto',
+                  justifyContent: 'center',
+                }}
+              >
+                <ForwardToInboxIcon  /> 
+              </ListItemIcon>
+              <ListItemText primary={"Contactanos"} sx={{ opacity: open ? 1 : 0 }} />
+            </ListItemButton>
+
+            
         </List>        
       </Drawer>
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
