@@ -1,6 +1,5 @@
 import './App.css';
-
-import NavBar from "./components/NavBar"
+import Container from "./components/Container"
 //UI
 import { ThemeProvider, createTheme } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
@@ -11,7 +10,7 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <CssBaseline />
-      <NavBar />
+      <Container />
     </ThemeProvider>
   );
 }
