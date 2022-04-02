@@ -3,12 +3,14 @@ import { styled } from '@mui/material/styles';
 import { Routes, Route } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
-import Card from "./Card/Card"
+//import Card from "./Card/Card"
+//import CardClient from "./CardClient/CardClient"
 import SideBar from './SideBar/SideBar';
 import Form from './Form/Form';
 import We from './We/We';
 import Contact from './Contact/Contact';
 import Error404 from './Pages/Error404';
+import Client from './Client/Client';
 
 const DrawerHeader = styled('div')(({ theme }) => ({
   display: 'flex',
@@ -30,7 +32,7 @@ const Container = () => {
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
         <Routes>
-          <Route exact path="/" element={<Card />} />
+          <Route exact path="/" element={<Client />} />
           <Route exact path="/agregar" element={<Form />} />
           <Route exact path="/nosotros" element={<We />} />
           <Route exact path="/contactanos" element={<Contact />} />
