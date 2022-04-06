@@ -13,6 +13,7 @@ const initialForm = {
     movil: "",
     api_url: "",
     token: "",
+    client:"",
     mensaje:"",
     id: null,
 };
@@ -63,17 +64,18 @@ const Form = ({
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        console.log(e.target.enlaceEmbed.value, "validando donde aparece");
-        if (!form.name || !form.descripcion) {
-            alert("Datos incompletos");
-            return;
-        }
+        // console.log(e.target.enlaceEmbed.value, "validando donde aparece");
+        // if (!form.name || !form.descripcion) {
+        //     alert("Datos incompletos");
+        //     return;
+        // }
 
-        if (dataToEdit) {
-            updateData({ ...form, enlaceEmbed: e.target.enlaceEmbed.value });
-        } else {
-            createData({ ...form, enlaceEmbed: e.target.enlaceEmbed.value });
-        }
+        // if (dataToEdit) {
+        //     updateData({ ...form, enlaceEmbed: e.target.enlaceEmbed.value });
+        // } else {
+        //     createData({ ...form, enlaceEmbed: e.target.enlaceEmbed.value });
+        // }
+        console.log(form)
         handleReset();
     };
 
@@ -97,9 +99,21 @@ const Form = ({
                             <TextField
                                 variant="outlined"
                                 label="Nombre de la instancia"
-                                placeholder="Nombre dela instancia"
+                                placeholder="Nombre de la instancia"
                                 value={form.name}
                                 name="name"
+                                fullWidth
+                                onChange={handleChange}
+                                required
+                            />
+                        </Grid>
+                        <Grid item xs={12}>
+                            <TextField
+                                variant="outlined"
+                                label="Nombre del cliente"
+                                placeholder="Nombre del cliente"
+                                value={form.client}
+                                name="client"
                                 fullWidth
                                 onChange={handleChange}
                                 required

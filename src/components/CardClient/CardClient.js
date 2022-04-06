@@ -4,23 +4,14 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import { Grid } from '@mui/material';
+import { Grid,Button } from '@mui/material';
 import { makeStyles } from "@mui/styles";
 import { NavLink } from "react-router-dom";
-
-
+import MenuAction from "../CardInstance/MenuAction";
+import LinkIcon from '@mui/icons-material/Link';
+import { blue } from '@mui/material/colors';
 
 const useStyles = makeStyles((theme) => ({
-  ip: {
-    marginTop: "10px",
-  },
-  tp: {
-    display: "flex",
-    width: "100%",
-    marginTop: "5px",
-    justifyContent: "space-between",
-    alignItems: "center"
-  },
   content: {
     display: "flex",
     width: "100%",
@@ -49,7 +40,7 @@ export default function MediaCard() {
   return (
     <Grid className={classes.content}>
 
-      <Grid item xs={12} sm={6} md={4} lg={3} xl={2}>
+      <Grid className={classes.cardItem} item xs={12} sm={6} md={4} lg={3} xl={2}>
         <Card sx={{ maxWidth: 250, width: 300 }}>
           <CardMedia
             component="img"
@@ -63,13 +54,15 @@ export default function MediaCard() {
             </Typography>
 
           </CardContent>
-          <CardActions sx={{ display: "flex", justifyContent: "end" }}>
-            <Typography gutterBottom variant="body2" component="div">
-              <NavLink  className={classes.link} to="/">
-                Ir a las instancias</NavLink>
+          <CardActions sx={{ display: "flex", justifyContent: "space-between" }}>
+            <MenuAction />
+            <Typography  variant="body2" >
+              <NavLink className={classes.link} to="/">
+                <Button size="small" variant="contained" endIcon={<LinkIcon />} sx={{fontSize: "12px", textTransform:"lowercase", background: blue[900] }} >
+                  Ir a Instancias
+                </Button>
+              </NavLink>
             </Typography>
-
-
           </CardActions>
         </Card>
 

@@ -3,8 +3,9 @@ import { styled } from '@mui/material/styles';
 import { Routes, Route } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
-//import Card from "./Card/Card"
-import CardClient from "./CardClient/CardClient"
+//import CardInstance from "./CardInstance/CardInstance"
+//import CardClient from "./CardClient/CardClient"
+import Client from "./Client/Client"
 import SideBar from './SideBar/SideBar';
 import Form from './Form/Form';
 import We from './We/We';
@@ -31,7 +32,7 @@ const Container = () => {
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
         <Routes>
-          <Route exact path="/" element={<CardClient />} />
+          <Route exact path="/" element={<Client />} />
           <Route exact path="/agregar" element={<Form />} />
           <Route exact path="/nosotros" element={<We />} />
           <Route exact path="/contactanos" element={<Contact />} />

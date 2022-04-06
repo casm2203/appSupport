@@ -66,7 +66,7 @@ const style = {
   p: 4,
 };
 
-export default function MediaCard() {
+const CardInstance = () => {
   const classes = useStyles();
   const [expanded, setExpanded] = useState(false);
 
@@ -86,7 +86,7 @@ export default function MediaCard() {
           <CardMedia
             component="img"
             height="140"
-            image="https://ii.ct-stc.com/1/logos/empresas/2019/06/28/3d171d89750f426eb40b213014591thumbnail.jpg"
+            image="https://i.ytimg.com/vi/m2t0ZkiWihg/maxresdefault.jpg"
             alt="green iguana"
           />
           <CardContent >
@@ -99,11 +99,9 @@ export default function MediaCard() {
               <IconButton onClick={handleOpen} aria-label="send" >
                 <VisibilityIcon fontSize="small" />
               </IconButton>
-
             </Typography>
-
             <Typography className={classes.tp} variant="body2" color="text.secondary" >
-              <b>Cuerpo del mensaje</b>
+              <strong>Cuerpo del mensaje</strong>
               <ExpandMore
                 expand={expanded}
                 onClick={handleExpandClick}
@@ -132,8 +130,8 @@ export default function MediaCard() {
           aria-describedby="modal-modal-description"
         >
           <Box sx={style}>
-          <Typography variant="h6" color="text.secondary">
-              <b>Instancia:</b>  Technisupport  
+            <Typography variant="h6" color="text.secondary">
+              <b>Instancia:</b>  Technisupport
             </Typography>
             <Typography variant="body2" color="text.secondary">
               <b>API URL:</b>  https://eu215.chat-api.com/instance102304/
@@ -158,3 +156,5 @@ export default function MediaCard() {
 
   );
 }
+
+export default  CardInstance;
