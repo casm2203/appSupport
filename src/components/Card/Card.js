@@ -86,7 +86,7 @@ export default function MediaCard() {
           <CardMedia
             component="img"
             height="140"
-            image="https://i.ytimg.com/vi/m2t0ZkiWihg/maxresdefault.jpg"
+            image="https://ii.ct-stc.com/1/logos/empresas/2019/06/28/3d171d89750f426eb40b213014591thumbnail.jpg"
             alt="green iguana"
           />
           <CardContent >

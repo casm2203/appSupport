@@ -43,7 +43,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 
-const CardInstance = () => {
+export default function MediaCard() {
   const classes = useStyles();
 
   return (
@@ -65,7 +65,7 @@ const CardInstance = () => {
           </CardContent>
           <CardActions sx={{ display: "flex", justifyContent: "end" }}>
             <Typography gutterBottom variant="body2" component="div">
-              <NavLink className={classes.link} to="/">
+              <NavLink  className={classes.link} to="/">
                 Ir a las instancias</NavLink>
             </Typography>
 
@@ -78,5 +78,3 @@ const CardInstance = () => {
 
   );
 }
-
-export default CardInstance;
