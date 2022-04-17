@@ -1,20 +1,35 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import IconButton from '@mui/material/IconButton';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import ModeEditIcon from '@mui/icons-material/ModeEdit';
+import DeleteIcon from '@mui/icons-material/Delete';
 import { blue } from '@mui/material/colors';
 
 const ITEM_HEIGHT = 48;
 
-const MenuAction = () => {
+const MenuAction = ({
+  item,
+  setDataToEdit,
+  deleteData,
+}) => {
   const [anchorEl, setAnchorEl] = useState(null);
   const open = Boolean(anchorEl);
+  let history = useNavigate();
+
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
     setAnchorEl(null);
+  };
+  const handleEdit = (el) => {
+    setDataToEdit(el);
+    history(`/agregar`);
   };
   return (
     <>
@@ -39,16 +54,32 @@ const MenuAction = () => {
         onClose={handleClose}
         PaperProps={{
           style: {
-            maxHeight: ITEM_HEIGHT * 4.5,
-            width: '20ch',
+            maxHeight: ITEM_HEIGHT * 2.2,
+            width: '15ch',
           },
         }}
       >
         <MenuItem onClick={handleClose}>
-          Editar
+          <Button
+            onClick={() => handleEdit(item)}
+            startIcon={<ModeEditIcon color="primary" />}
+            size="small"
+          >
+            <Typography color="primary" component="p" sx={{ fontSize: "12px" }}>
+              Editar
+            </Typography>
+          </Button>
         </MenuItem>
         <MenuItem onClick={handleClose}>
-          Eliminar
+          <Button
+            onClick={() => deleteData(item.id)}
+            aria-label="delete"
+            startIcon={<DeleteIcon color="error" />}
+          >
+            <Typography color="error" component="p"sx={{ fontSize: "12px" }}>
+              Eliminar
+            </Typography>
+          </Button>
         </MenuItem>
       </Menu>
     </>

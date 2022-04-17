@@ -19,17 +19,18 @@ const useStyles = makeStyles((theme) => ({
     padding: "20px",
   },
   cardItem: {
-    marginRight: "10px"
+    marginRight: "10px",
+    paddingTop:"5px",
   },
   colapsee: {
     padding: "0px",
   },
   link: {
-    textDecoration: "none",
-    marginLeft: "5px",
     display: "flex",
     width: "100%",
     color: "black",
+    marginLeft: "5px",
+    textDecoration: "none",
   }
 }));
 

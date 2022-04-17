@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate } from 'react-router-dom';
 //UI
 import { makeStyles } from "@mui/styles";
 import { Grid, Paper, Avatar, TextField, Button } from '@mui/material';
@@ -13,8 +14,8 @@ const initialForm = {
     movil: "",
     api_url: "",
     token: "",
-    client:"",
-    mensaje:"",
+    client: "",
+    message: "",
     id: null,
 };
 const Form = ({
@@ -22,7 +23,7 @@ const Form = ({
     updateData,
     dataToEdit,
     setDataToEdit,
-    responsive,
+    
 }) => {
     const useStyles = makeStyles((theme) => ({
         gridItems: {
@@ -46,6 +47,7 @@ const Form = ({
 
     const classes = useStyles();
     const [form, setForm] = useState(initialForm);
+    let history = useNavigate();
 
     useEffect(() => {
         if (dataToEdit) {
@@ -55,6 +57,21 @@ const Form = ({
         }
     }, [dataToEdit]);
 
+   const handleSubmit = (e) => {
+        e.preventDefault();
+        if (!form.name || !form.token || !form.api_url) {
+            alert("Datos incompletos");
+            return;
+        }
+        if (dataToEdit) {
+            updateData({ ...form});
+        } else {
+            createData({ ...form});
+        }
+        handleReset();
+    };
+
+  
     const handleChange = (e) => {
         setForm({
             ...form,
@@ -62,26 +79,10 @@ const Form = ({
         });
     };
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        // console.log(e.target.enlaceEmbed.value, "validando donde aparece");
-        // if (!form.name || !form.descripcion) {
-        //     alert("Datos incompletos");
-        //     return;
-        // }
-
-        // if (dataToEdit) {
-        //     updateData({ ...form, enlaceEmbed: e.target.enlaceEmbed.value });
-        // } else {
-        //     createData({ ...form, enlaceEmbed: e.target.enlaceEmbed.value });
-        // }
-        console.log(form)
-        handleReset();
-    };
-
     const handleReset = (e) => {
         setForm(initialForm);
         setDataToEdit(null);
+        history(`/`);
     };
 
     return (
@@ -164,9 +165,9 @@ const Form = ({
                                 label="Mensaje Predeterminado"
                                 placeholder="Mensaje Predeterminado"
                                 type="text"
-                                value={form.mensaje}
+                                value={form.message}
                                 onChange={handleChange}
-                                name="mensaje"
+                                name="message"
                                 fullWidth
                                 required
                             />

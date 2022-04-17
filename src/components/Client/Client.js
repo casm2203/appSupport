@@ -7,6 +7,8 @@ import Button from '@mui/material/Button';
 import Box from '@mui/material/Box';
 import CardInstance from '../CardInstance/CardInstance';
 import { blue } from '@mui/material/colors';
+import Spinner from '../Pages/Spinner';
+
 
 const CONTENTBASE = {
     display: "flex",
@@ -36,9 +38,13 @@ const useStyles = makeStyles((theme) => ({
 
 
 
-const Client = () => {
+const Client = ({
+    data,
+    setDataToEdit,
+    deleteData,
+    updateData,
+}) => {
     const classes = useStyles();
-
 
     return (
         <Grid container className={classes.content} >
@@ -47,7 +53,6 @@ const Client = () => {
                     width: "100%",
                     boxShadow: 2,
                     borderRadius: 2,
-
                 }}
             >
                 <Grid className={classes.contentClient} item xs={12}>
@@ -56,10 +61,9 @@ const Client = () => {
                             href="https://www.linkedin.com/in/cristian-suarez2203"
                             target="_blank"
                             rel="noreferrer"
-
                         >
                             <img
-                                src="https://ii.ct-stc.com/1/logos/empresas/2019/06/28/3d171d89750f426eb40b213014591thumbnail.jpg"
+                                src="https://www.whoson.com/img/product/api/chat-api.png"
                                 alt="Tex"
                                 width="169"
                                 height="150"
@@ -70,14 +74,12 @@ const Client = () => {
                     </Grid>
                     <Grid item xs={9}>
                         <Typography gutterBottom variant="h4" >
-                            Technisupport
-                            <hr></hr>
+                            Chat API
+                            <hr />
                         </Typography>
                         <Typography gutterBottom variant="body2" >
-                            Sector tecnologia
+                            WhatsApp Business API
                         </Typography>
-
-
                     </Grid>
                 </Grid>
                 <Typography gutterBottom variant="body2" >
@@ -88,7 +90,6 @@ const Client = () => {
                         <Typography gutterBottom variant="h6" >
                             Prueba de diagnostico
                         </Typography>
-
                     </Grid>
                     <Grid item xs={9} >
                         <Button variant="contained" sx={{ background: blue[900] }} endIcon={<MobileScreenShareIcon />} >
@@ -98,9 +99,41 @@ const Client = () => {
                     </Grid>
                 </Grid>
             </Box>
-            <Grid className={classes.contentClient} item xs={12}>
-                <CardInstance />
-            </Grid>
+
+            {/* <Grid className={classes.contentClient} item xs={12}>
+            </Grid> */}
+            {(data.length > 0) ? (<>
+                <CardInstance
+                    data={data}
+                    setDataToEdit={setDataToEdit}
+                    deleteData={deleteData}
+                    updateData={updateData}
+                /><CardInstance
+                data={data}
+                setDataToEdit={setDataToEdit}
+                deleteData={deleteData}
+                updateData={updateData}
+            />
+            <CardInstance
+                    data={data}
+                    setDataToEdit={setDataToEdit}
+                    deleteData={deleteData}
+                    updateData={updateData}
+                />
+                <CardInstance
+                    data={data}
+                    setDataToEdit={setDataToEdit}
+                    deleteData={deleteData}
+                    updateData={updateData}
+                />
+                <CardInstance
+                    data={data}
+                    setDataToEdit={setDataToEdit}
+                    deleteData={deleteData}
+                    updateData={updateData}
+                />
+            </>):(<Spinner/>)
+            }
         </Grid>
     )
 }
