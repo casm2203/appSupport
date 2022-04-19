@@ -13,10 +13,14 @@ import IconButton from '@mui/material/IconButton';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { styled } from '@mui/material/styles';
 import Collapse from '@mui/material/Collapse';
-import { blue } from '@mui/material/colors';
+import { blue, green, yellow } from '@mui/material/colors';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
 import VisibilityIcon from '@mui/icons-material/Visibility';
+import QrCode2Icon from '@mui/icons-material/QrCode2';
+import ConnectedTvIcon from '@mui/icons-material/ConnectedTv';
+import WarningIcon from '@mui/icons-material/Warning';
+import RefreshIcon from '@mui/icons-material/Refresh';
 
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
@@ -74,6 +78,7 @@ const CardInstance = ({
 }) => {
   const classes = useStyles();
   const [expanded, setExpanded] = useState(false);
+  const [status] = useState(2);
 
   const handleExpandClick = () => {
     setExpanded(!expanded);
@@ -83,6 +88,18 @@ const CardInstance = ({
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
   console.log(data, "cardinstance")
+
+
+  const statusEquip = () => {
+    switch(status) {
+      case 0:   return <ConnectedTvIcon sx={{ color: green[500]}} />;
+      case 1:   return <QrCode2Icon />;
+      case 2:   return <WarningIcon sx={{ color: yellow[700]}} />;
+      default:      return <WarningIcon />;
+    }
+  }
+
+
   return (
     //<Grid className={classes.content}>
     <>
@@ -122,16 +139,24 @@ const CardInstance = ({
                 <Input className={classes.ip} fullWidth placeholder="Mensaje personalizado" />
               </Collapse>
             </CardContent>
-            <CardActions sx={{ display: "flex", justifyContent: "end" }}>
-              <MenuAction
-                item={{ id, name, token, api_url, movil, client, message }}
-                setDataToEdit={setDataToEdit}
-                deleteData={deleteData}
-                updateData={updateData}
-              />
-              <IconButton aria-label="send" >
-                <SendIcon sx={{ color: blue[900] }} />
-              </IconButton>
+            <CardActions sx={{ display: "flex", justifyContent:"space-between" }}>
+              <Grid sx={{ display: "flex", alignItems:"center" }} >
+                {statusEquip() }
+                <IconButton aria-label="send" >
+                  <RefreshIcon  />
+                </IconButton>
+              </Grid>
+              <Grid>
+                <MenuAction
+                  item={{ id, name, token, api_url, movil, client, message }}
+                  setDataToEdit={setDataToEdit}
+                  deleteData={deleteData}
+                  updateData={updateData}
+                />
+                <IconButton aria-label="send" >
+                  <SendIcon sx={{ color: blue[900] }} />
+                </IconButton>
+              </Grid>
             </CardActions>
           </Card>
           <Modal
@@ -163,7 +188,7 @@ const CardInstance = ({
             </Box>
           </Modal>
         </Grid>
-      
+
       ))}
     </>
     //</Grid>
