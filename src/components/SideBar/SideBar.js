@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { connect } from "react-redux";
+import { updateSesion } from "../../redux/actions/sesionAction";
 import { styled, useTheme } from '@mui/material/styles';
 import MuiDrawer from '@mui/material/Drawer';
 import MuiAppBar from '@mui/material/AppBar';
@@ -20,6 +22,8 @@ import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import { NavLink } from 'react-router-dom';
 import icon from "../../assets/support4.0.png";
 import { makeStyles } from "@mui/styles";
+import Avatar from '@mui/material/Avatar';
+import { blue } from '@mui/material/colors';
 
 
 const useStyles = makeStyles(() => ({
@@ -103,7 +107,11 @@ const Drawer = styled(MuiDrawer, { shouldForwardProp: (prop) => prop !== 'open' 
         }),
     }),
 );
-const SideBar = () => {
+
+
+
+
+const SideBar = ({ sesionActiva, updateSesion }) => {
     const theme = useTheme();
     const classes = useStyles();
     const [open, setOpen] = useState(false);
@@ -116,11 +124,10 @@ const SideBar = () => {
         setOpen(false);
     };
 
-
     return (
         <>
             <AppBar position="fixed" open={open}>
-                <Toolbar>
+                <Toolbar sx={{ display: "flex", justifyContent: "space-between" }}>
                     <IconButton
                         color="inherit"
                         aria-label="open drawer"
@@ -134,8 +141,9 @@ const SideBar = () => {
                         <MenuIcon />
                     </IconButton>
                     <Typography variant="h6" noWrap component="div">
-                    <img src={icon} alt="icon" width="24" height="22" /> AppSupport
+                        <img src={icon} alt="icon" width="24" height="22" /> AppSupport
                     </Typography>
+                    {sesionActiva.email ? <Avatar sx={{ background: "white", textTransform: "capitalize", color: blue[900] }}> {sesionActiva.displayName.substring(0, 1)} </Avatar> : <Avatar />}
                 </Toolbar>
             </AppBar>
             <Drawer variant="permanent" open={open}>
@@ -241,6 +249,17 @@ const SideBar = () => {
     );
 };
 
+//Redux State
+const mapStateToProps = (state) => {
+    return {
+        responsive: state.responsive,
+        sesionActiva: state.sesion.sesionActiva,
+    };
+};
+const mapDispatchToProps = (dispatch) => {
+    return {
+        updateSesion: (sesion) => dispatch(updateSesion(sesion)),
+    };
+};
 
-
-export default SideBar;
+export default connect(mapStateToProps, mapDispatchToProps)(SideBar);
