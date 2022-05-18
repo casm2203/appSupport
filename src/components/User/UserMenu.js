@@ -1,21 +1,23 @@
 import React, { useState } from "react";
 import { connect } from "react-redux";
-import { updateSesion } from "./../../redux/actions/sesionAction";
+import { updateSesion } from "../../redux/actions/sesionAction";
 import { NavLink } from "react-router-dom";
 //Firebase
-import { auth } from "./../../firebaseyt/firebaseConfig";
+import { auth } from "./../../firebase/firebaseConfig";
 import { signOut } from "firebase/auth";
 //UI
-import { makeStyles } from "@material-ui/core/styles";
-import { ListItemIcon, ListItemText } from "@material-ui/core";
+import { makeStyles } from "@mui/styles";
+import { ListItemIcon, ListItemText } from "@mui/material";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
-import PersonIcon from "@mui/icons-material/Person";
+//import PersonIcon from "@mui/icons-material/Person";
+//import Button from "@mui/material/Button";
 import PersonAddIcon from "@mui/icons-material/PersonAdd";
 import ExitToAppIcon from "@mui/icons-material/ExitToApp";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
-import Button from "@mui/material/Button";
 import LoginStyles from "../Style/StylesYt";
+import Avatar from '@mui/material/Avatar';
+import { blue } from '@mui/material/colors';
 
 const useStyles = makeStyles(LoginStyles);
 
@@ -37,13 +39,13 @@ const UserMenu = ({ sesionActiva, updateSesion }) => {
       .then(() => {
         updateSesion({});
       })
-      .catch((error) => {});
+      .catch((error) => { });
   };
 
   return (
     <>
       {/* Perfil */}
-      <Button
+      {/* <Button
         onClick={handleClick}
         sx={{
           borderColor: "white",
@@ -56,8 +58,8 @@ const UserMenu = ({ sesionActiva, updateSesion }) => {
         startIcon={<PersonIcon />}
       >
         {sesionActiva.email ? `Hola, ${sesionActiva.displayName}` : "Perfil"}
-      </Button>
-
+      </Button> */}
+      {sesionActiva.email ? <Avatar onClick={handleClick} sx={{ background: "white", textTransform: "capitalize", color: blue[900] }}> {sesionActiva.displayName.substring(0, 1)} </Avatar> : <Avatar onClick={handleClick} />}
       {/* Menu */}
       <Menu
         id="long-menu"
@@ -74,6 +76,8 @@ const UserMenu = ({ sesionActiva, updateSesion }) => {
           },
         }}
       >
+
+
         {/* iniciar sesion */}
         <NavLink
           exact
@@ -94,7 +98,7 @@ const UserMenu = ({ sesionActiva, updateSesion }) => {
           exact
           className={classes.link}
           onClick={handleClose}
-          to="/registrarme"
+          to="/registro"
         >
           <MenuItem divider>
             <ListItemIcon className={classes.link}>

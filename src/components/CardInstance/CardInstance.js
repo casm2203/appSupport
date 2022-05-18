@@ -4,15 +4,15 @@ import CardActions from '@mui/material/CardActions';
 import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
-import Input from '@mui/material/Input';
 import MenuAction from './MenuAction';
 import { Grid } from '@mui/material';
 import { makeStyles } from "@mui/styles";
 import SendIcon from '@mui/icons-material/Send';
 import IconButton from '@mui/material/IconButton';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { styled } from '@mui/material/styles';
-import Collapse from '@mui/material/Collapse';
+//import Input from '@mui/material/Input';
+//import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+//import { styled } from '@mui/material/styles';
+//import Collapse from '@mui/material/Collapse';
 import { blue, green, yellow } from '@mui/material/colors';
 import Box from '@mui/material/Box';
 import Modal from '@mui/material/Modal';
@@ -22,16 +22,16 @@ import ConnectedTvIcon from '@mui/icons-material/ConnectedTv';
 import WarningIcon from '@mui/icons-material/Warning';
 import RefreshIcon from '@mui/icons-material/Refresh';
 
-const ExpandMore = styled((props) => {
-  const { expand, ...other } = props;
-  return <IconButton {...other} />;
-})(({ theme, expand }) => ({
-  transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
-  marginLeft: 'auto',
-  transition: theme.transitions.create('transform', {
-    duration: theme.transitions.duration.shortest,
-  }),
-}));
+// const ExpandMore = styled((props) => {
+//   const { expand, ...other } = props;
+//   return <IconButton {...other} />;
+// })(({ theme, expand }) => ({
+//   transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
+//   marginLeft: 'auto',
+//   transition: theme.transitions.create('transform', {
+//     duration: theme.transitions.duration.shortest,
+//   }),
+// }));
 
 const useStyles = makeStyles((theme) => ({
   ip: {
@@ -77,12 +77,12 @@ const CardInstance = ({
   updateData,
 }) => {
   const classes = useStyles();
-  const [expanded, setExpanded] = useState(false);
-  const [status] = useState(2);
+  //const [expanded, setExpanded] = useState(false);
+  const [status] = useState(0);
 
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
+  // const handleExpandClick = () => {
+  //   setExpanded(!expanded);
+  // };
 
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -123,7 +123,7 @@ const CardInstance = ({
                   <VisibilityIcon fontSize="small" />
                 </IconButton>
               </Typography>
-              <Typography className={classes.tp} variant="body2" color="text.secondary" >
+              {/* <Typography className={classes.tp} variant="body2" color="text.secondary" >
                 <strong>Cuerpo del mensaje</strong>
                 <ExpandMore
                   expand={expanded}
@@ -133,11 +133,11 @@ const CardInstance = ({
                 >
                   <ExpandMoreIcon />
                 </ExpandMore>
-              </Typography>
+              </Typography> 
               <Collapse in={expanded} timeout="auto" unmountOnExit className={classes.colapsee} >
                 <Input className={classes.ip} fullWidth placeholder="573015748542" />
                 <Input className={classes.ip} fullWidth placeholder="Mensaje personalizado" />
-              </Collapse>
+              </Collapse>*/}
             </CardContent>
             <CardActions sx={{ display: "flex", justifyContent:"space-between" }}>
               <Grid sx={{ display: "flex", alignItems:"center" }} >

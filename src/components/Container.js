@@ -5,7 +5,7 @@ import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
 //import CardInstance from "./CardInstance/CardInstance"
 //import CardClient from "./CardClient/CardClient"
-//import Client from "./Client/Client"
+import Client from "./Client/Client"
 import SideBar from './SideBar/SideBar';
 import Form from './Form/Form';
 import We from './We/We';
@@ -22,8 +22,8 @@ import {
   query,
 } from "firebase/firestore";
 import { db } from "../firebase/firebaseConfig";
-import Login from './Login/Login';
-import SignIn from './Login/SignIn';
+import Login from './User/Login';
+import SignUp from './User/SignUp';
 
 const DrawerHeader = styled('div')(({ theme }) => ({
   display: 'flex',
@@ -98,7 +98,7 @@ const Container = () => {
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
         <Routes>
-          {/* <Route exact path="/" element={
+           <Route exact path="/" element={
           <Client
             data={dbs}
             createData={createData}
@@ -107,8 +107,8 @@ const Container = () => {
             dataToEdit={dataToEdit}
             setDataToEdit={setDataToEdit}
           />} 
-          /> */}
-          <Route exact path="/" element={<SignIn />} />
+          /> 
+          {/* <Route exact path="/" element={<SignUp />} /> */}
           <Route exact path="/agregar" element={
             <Form
               createData={createData}
@@ -121,7 +121,7 @@ const Container = () => {
           <Route exact path="/nosotros" element={<We />} />
           <Route exact path="/contactanos" element={<Contact />} />
           <Route exact path="/iniciarsesion" element={<Login />} />
-          <Route exact path="/registro" element={<SignIn />} />
+          <Route exact path="/registro" element={<SignUp />} />
           <Route path="*" element={<Error404 />} />
         </Routes>
       </Box>
