@@ -103,13 +103,16 @@ const Client = ({
             {/* <Grid className={classes.contentClient} item xs={12}>
             </Grid> */}
             {(data.length > 0) ? (<>
-                <CardInstance
-                    data={data}
-                    setDataToEdit={setDataToEdit}
-                    deleteData={deleteData}
-                    updateData={updateData}
-                />
-            </>):(<Spinner/>)
+                {data.map((el) => (
+                    <CardInstance
+                        key={el.id}
+                        {...el}
+                        setDataToEdit={setDataToEdit}
+                        deleteData={deleteData}
+                        updateData={updateData}
+                    />
+                ))}
+            </>) : (<Spinner />)
             }
         </Grid>
     )
