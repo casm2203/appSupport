@@ -239,7 +239,7 @@ const SideBar = ({ sesionActiva, updateSesion }) => {
                             >
                                 <ForwardToInboxIcon />
                             </ListItemIcon>
-                            <ListItemText primary={"Contactanos"} sx={{ opacity: open ? 1 : 0 }} />
+                            <ListItemText primary={"Reportar Novedad"} sx={{ opacity: open ? 1 : 0 }} />
                         </NavLink>
                     </ListItemButton>
 

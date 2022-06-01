@@ -2,11 +2,11 @@ import React from 'react'
 import Grid from '@mui/material/Grid';
 import { makeStyles } from "@mui/styles";
 import Typography from '@mui/material/Typography';
-import MobileScreenShareIcon from '@mui/icons-material/MobileScreenShare';
-import Button from '@mui/material/Button';
+//import MobileScreenShareIcon from '@mui/icons-material/MobileScreenShare';
+//import Button from '@mui/material/Button';
+//import { blue } from '@mui/material/colors';
 import Box from '@mui/material/Box';
 import CardInstance from '../CardInstance/CardInstance';
-import { blue } from '@mui/material/colors';
 import Spinner from '../Pages/Spinner';
 
 
@@ -86,17 +86,17 @@ const Client = ({
                     <hr></hr>
                 </Typography>
                 <Grid className={classes.contentDiagnostico} item xs={12}  >
-                    <Grid item xs={3}  >
+                    <Grid item xs={4}  >
                         <Typography gutterBottom variant="h6" >
-                            Prueba de diagnostico
+                            Prueba de diagnostico de WhatsApp
                         </Typography>
                     </Grid>
-                    <Grid item xs={9} >
+                    {/* <Grid item xs={9} >
                         <Button variant="contained" sx={{ background: blue[900] }} endIcon={<MobileScreenShareIcon />} >
                             Iniciar test
                         </Button>
 
-                    </Grid>
+                    </Grid> */}
                 </Grid>
             </Box>
 

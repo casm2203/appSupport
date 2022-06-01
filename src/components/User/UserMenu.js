@@ -77,36 +77,39 @@ const UserMenu = ({ sesionActiva, updateSesion }) => {
         }}
       >
 
+        {!sesionActiva.email && (
+          <>
+            {/* iniciar sesion */}
+            < NavLink
+              exact
+              className={classes.link}
+              onClick={handleClose}
+              to="/iniciarSesion"
+            >
+              <MenuItem divider>
+                <ListItemIcon className={classes.link}>
+                  <AccountCircleIcon fontSize="small" />
+                </ListItemIcon>
+                <ListItemText>Iniciar sesion</ListItemText>
+              </MenuItem>
+            </NavLink>
 
-        {/* iniciar sesion */}
-        <NavLink
-          exact
-          className={classes.link}
-          onClick={handleClose}
-          to="/iniciarSesion"
-        >
-          <MenuItem divider>
-            <ListItemIcon className={classes.link}>
-              <AccountCircleIcon fontSize="small" />
-            </ListItemIcon>
-            <ListItemText>Iniciar sesion</ListItemText>
-          </MenuItem>
-        </NavLink>
-
-        {/* Registro */}
-        <NavLink
-          exact
-          className={classes.link}
-          onClick={handleClose}
-          to="/registro"
-        >
-          <MenuItem divider>
-            <ListItemIcon className={classes.link}>
-              <PersonAddIcon fontSize="small" />
-            </ListItemIcon>
-            <ListItemText>Registrarme</ListItemText>
-          </MenuItem>
-        </NavLink>
+            {/* Registro */}
+            <NavLink
+              exact
+              className={classes.link}
+              onClick={handleClose}
+              to="/registro"
+            >
+              <MenuItem divider>
+                <ListItemIcon className={classes.link}>
+                  <PersonAddIcon fontSize="small" />
+                </ListItemIcon>
+                <ListItemText>Registrarme</ListItemText>
+              </MenuItem>
+            </NavLink>
+          </>
+        )}
 
         {/* Cerrar sesion */}
         {sesionActiva.email && (

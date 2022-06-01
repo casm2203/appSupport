@@ -20,10 +20,12 @@ import VisibilityIcon from '@mui/icons-material/Visibility';
 import QrCode2Icon from '@mui/icons-material/QrCode2';
 import ConnectedTvIcon from '@mui/icons-material/ConnectedTv';
 import WarningIcon from '@mui/icons-material/Warning';
-import RefreshIcon from '@mui/icons-material/Refresh';
+//import RefreshIcon from '@mui/icons-material/Refresh';
 import CircularProgress from '@mui/material/CircularProgress';
 import Snackbar from '@mui/material/Snackbar';
 import MuiAlert from '@mui/material/Alert';
+import { connect } from "react-redux";
+import { updateSesion } from "../../redux/actions/sesionAction";
 
 import axios from 'axios';
 
@@ -79,7 +81,7 @@ const style = {
   p: 4,
 };
 
-const CardInstance = ({ id, name, token, api_url, movil, client, message, setDataToEdit, deleteData, updateData }) => {
+const CardInstance = ({ id, name, token, api_url, movil, client, message, setDataToEdit, deleteData, updateData, sesionActiva, updateSesion }) => {
   const classes = useStyles();
   //const [expanded, setExpanded] = useState(false);
   const [status, setStatus] = useState('loading');
@@ -117,12 +119,12 @@ const CardInstance = ({ id, name, token, api_url, movil, client, message, setDat
 
   const handleSendMessage = () => {
     const date = new Date();
-    axios.post(`${api_url}sendMessage?token=${token}`, { 
-      phone: "573022200224",
+    axios.post(`${api_url}sendMessage?token=${token}`, {
+      phone: `57${sesionActiva.photoURL}`,
       body: `[*${date.toLocaleDateString()} ${date.toLocaleTimeString()}]* Mensaje de verificación de estado del servicio.`
-     }).then(res => {
+    }).then(res => {
       console.log("res:", res.data);
-      if(res.data.sent) setOpenAlert(true);
+      if (res.data.sent) setOpenAlert(true);
     }).catch(err => {
       console.log("err:", err);
     })
@@ -177,11 +179,11 @@ const CardInstance = ({ id, name, token, api_url, movil, client, message, setDat
           <CardActions sx={{ display: "flex", justifyContent: "space-between" }}>
             <Grid sx={{ display: "flex", alignItems: "center" }} >
               {statusEquip()}
-              <IconButton aria-label="send" >
+              {/* <IconButton aria-label="send" >
                 <RefreshIcon />
-              </IconButton>
+              </IconButton> */}
             </Grid>
-            <Grid>
+              {sesionActiva.email && (<Grid>
               <MenuAction
                 item={{ id, name, token, api_url, movil, client, message }}
                 setDataToEdit={setDataToEdit}
@@ -191,7 +193,8 @@ const CardInstance = ({ id, name, token, api_url, movil, client, message, setDat
               <IconButton aria-label="send" onClick={handleSendMessage}>
                 <SendIcon sx={{ color: blue[900] }} />
               </IconButton>
-            </Grid>
+            </Grid>)}
+            
           </CardActions>
         </Card>
         <Modal
@@ -222,11 +225,11 @@ const CardInstance = ({ id, name, token, api_url, movil, client, message, setDat
             </Typography>
           </Box>
         </Modal>
-      <Snackbar open={openAlert} autoHideDuration={6000} onClose={handleCloseAlert}>
-        <Alert onClose={handleCloseAlert} severity="success" sx={{ width: '100%' }}>
-          Mensaje enviado con éxito.
-        </Alert>
-      </Snackbar>
+        <Snackbar open={openAlert} autoHideDuration={6000} onClose={handleCloseAlert}>
+          <Alert onClose={handleCloseAlert} severity="success" sx={{ width: '100%' }}>
+            Mensaje enviado con éxito.
+          </Alert>
+        </Snackbar>
       </Grid>
     </>
     //</Grid>
@@ -234,4 +237,15 @@ const CardInstance = ({ id, name, token, api_url, movil, client, message, setDat
   );
 }
 
-export default CardInstance;
+const mapStateToProps = (state) => {
+  return {
+    sesionActiva: state.sesion.sesionActiva,
+  };
+};
+const mapDispatchToProps = (dispatch) => {
+  return {
+    updateSesion: (sesion) => dispatch(updateSesion(sesion)),
+  };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(CardInstance);

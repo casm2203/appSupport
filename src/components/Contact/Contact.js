@@ -94,12 +94,12 @@ const Contact = () => {
                     <Grid container justify="space-between" spacing={1}>
                         <Grid item xs={12}>
                             <Typography variant="h6" color="initial">
-                                <b>Contactame</b>
+                                <b>Reportar novedad</b>
                             </Typography>
                         </Grid>
                         <Grid item xs={12}>
                             <Typography variant="body1" color="initial">
-                                Hola, si quieres conocerme puedes enviar un email
+                                Hola, para reportar novedad en la aplicación puedes enviar un email
                             </Typography>
                         </Grid>
                         <Grid item xs={6}>
