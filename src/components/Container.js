@@ -5,7 +5,7 @@ import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
 //import CardInstance from "./CardInstance/CardInstance"
 //import CardClient from "./CardClient/CardClient"
-//import Client from "./Client/Client"
+import Client from "./Client/Client"
 import SideBar from './SideBar/SideBar';
 import Form from './Form/Form';
 import We from './We/We';
@@ -98,7 +98,7 @@ const Container = () => {
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
         <DrawerHeader />
         <Routes>
-          {/* <Route exact path="/" element={
+           <Route exact path="/" element={
           <Client
             data={dbs}
             createData={createData}
@@ -107,8 +107,8 @@ const Container = () => {
             dataToEdit={dataToEdit}
             setDataToEdit={setDataToEdit}
           />} 
-          /> */}
-          <Route exact path="/" element={<SignIn />} />
+          /> 
+          {/* <Route exact path="/" element={<SignIn />} /> */}
           <Route exact path="/agregar" element={
             <Form
               createData={createData}
