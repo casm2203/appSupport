@@ -108,29 +108,6 @@ const Client = ({
                     setDataToEdit={setDataToEdit}
                     deleteData={deleteData}
                     updateData={updateData}
-                /><CardInstance
-                data={data}
-                setDataToEdit={setDataToEdit}
-                deleteData={deleteData}
-                updateData={updateData}
-            />
-            <CardInstance
-                    data={data}
-                    setDataToEdit={setDataToEdit}
-                    deleteData={deleteData}
-                    updateData={updateData}
-                />
-                <CardInstance
-                    data={data}
-                    setDataToEdit={setDataToEdit}
-                    deleteData={deleteData}
-                    updateData={updateData}
-                />
-                <CardInstance
-                    data={data}
-                    setDataToEdit={setDataToEdit}
-                    deleteData={deleteData}
-                    updateData={updateData}
                 />
             </>):(<Spinner/>)
             }

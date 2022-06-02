@@ -15,7 +15,6 @@ const initialForm = {
     api_url: "",
     token: "",
     client: "",
-    message: "",
     id: null,
 };
 const Form = ({
@@ -23,7 +22,7 @@ const Form = ({
     updateData,
     dataToEdit,
     setDataToEdit,
-    
+
 }) => {
     const useStyles = makeStyles((theme) => ({
         gridItems: {
@@ -57,21 +56,21 @@ const Form = ({
         }
     }, [dataToEdit]);
 
-   const handleSubmit = (e) => {
+    const handleSubmit = (e) => {
         e.preventDefault();
         if (!form.name || !form.token || !form.api_url) {
             alert("Datos incompletos");
             return;
         }
         if (dataToEdit) {
-            updateData({ ...form});
+            updateData({ ...form });
         } else {
-            createData({ ...form});
+            createData({ ...form });
         }
         handleReset();
     };
 
-  
+
     const handleChange = (e) => {
         setForm({
             ...form,
@@ -155,19 +154,6 @@ const Form = ({
                                 value={form.movil}
                                 onChange={handleChange}
                                 name="movil"
-                                fullWidth
-                                required
-                            />
-                        </Grid>
-                        <Grid item xs={12}>
-                            <TextField
-                                variant="outlined"
-                                label="Mensaje Predeterminado"
-                                placeholder="Mensaje Predeterminado"
-                                type="text"
-                                value={form.message}
-                                onChange={handleChange}
-                                name="message"
                                 fullWidth
                                 required
                             />

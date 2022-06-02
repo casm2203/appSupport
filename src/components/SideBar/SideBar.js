@@ -22,8 +22,7 @@ import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import { NavLink } from 'react-router-dom';
 import icon from "../../assets/support4.0.png";
 import { makeStyles } from "@mui/styles";
-import Avatar from '@mui/material/Avatar';
-import { blue } from '@mui/material/colors';
+import UserMenu from '../User/UserMenu';
 
 
 const useStyles = makeStyles(() => ({
@@ -143,7 +142,8 @@ const SideBar = ({ sesionActiva, updateSesion }) => {
                     <Typography variant="h6" noWrap component="div">
                         <img src={icon} alt="icon" width="24" height="22" /> AppSupport
                     </Typography>
-                    {sesionActiva.email ? <Avatar sx={{ background: "white", textTransform: "capitalize", color: blue[900] }}> {sesionActiva.displayName.substring(0, 1)} </Avatar> : <Avatar />}
+                    {/* {sesionActiva.email ? <Avatar sx={{ background: "white", textTransform: "capitalize", color: blue[900] }}> {sesionActiva.displayName.substring(0, 1)} </Avatar> : <Avatar />} */}
+                    <UserMenu/>
                 </Toolbar>
             </AppBar>
             <Drawer variant="permanent" open={open}>

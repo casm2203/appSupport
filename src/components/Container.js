@@ -22,8 +22,8 @@ import {
   query,
 } from "firebase/firestore";
 import { db } from "../firebase/firebaseConfig";
-import Login from './Login/Login';
-import SignIn from './Login/SignIn';
+import Login from './User/Login';
+import SignUp from './User/SignUp';
 
 const DrawerHeader = styled('div')(({ theme }) => ({
   display: 'flex',
@@ -121,7 +121,7 @@ const Container = () => {
           <Route exact path="/nosotros" element={<We />} />
           <Route exact path="/contactanos" element={<Contact />} />
           <Route exact path="/iniciarsesion" element={<Login />} />
-          <Route exact path="/registro" element={<SignIn />} />
+          <Route exact path="/registro" element={<SignUp />} />
           <Route path="*" element={<Error404 />} />
         </Routes>
       </Box>
