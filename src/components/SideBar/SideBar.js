@@ -16,7 +16,7 @@ import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
 import ListItemText from '@mui/material/ListItemText';
 import PublicIcon from '@mui/icons-material/Public';
-import GroupIcon from '@mui/icons-material/Group';
+//import GroupIcon from '@mui/icons-material/Group';
 import ForwardToInboxIcon from '@mui/icons-material/ForwardToInbox';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import { NavLink } from 'react-router-dom';
@@ -200,7 +200,7 @@ const SideBar = ({ sesionActiva, updateSesion }) => {
                     </ListItemButton>
 
                     {/* Nosotros */}
-                    <ListItemButton
+                    {/* <ListItemButton
                         sx={{
                             minHeight: 48,
                             justifyContent: open ? 'initial' : 'center',
@@ -219,7 +219,7 @@ const SideBar = ({ sesionActiva, updateSesion }) => {
                             </ListItemIcon>
                             <ListItemText primary={"Nosotros"} sx={{ opacity: open ? 1 : 0 }} />
                         </NavLink>
-                    </ListItemButton>
+                    </ListItemButton> */}
 
                     {/* Contactanos */}
                     <ListItemButton

@@ -47,16 +47,18 @@ const Form = ({
     const classes = useStyles();
     const [form, setForm] = useState(initialForm);
     let history = useNavigate();
-
+console.log(dataToEdit,"esto llega al editar")
     useEffect(() => {
         if (dataToEdit) {
             setForm(dataToEdit);
         } else {
             setForm(initialForm);
         }
+
     }, [dataToEdit]);
 
     const handleSubmit = (e) => {
+        console.log(form, "esto se envía")
         e.preventDefault();
         if (!form.name || !form.token || !form.api_url) {
             alert("Datos incompletos");

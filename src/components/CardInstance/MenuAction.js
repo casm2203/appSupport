@@ -65,7 +65,7 @@ const MenuAction = ({
             startIcon={<ModeEditIcon color="primary" />}
             size="small"
           >
-            <Typography color="primary" component="p" sx={{ fontSize: "12px" }}>
+            <Typography color="primary" component={'span'} sx={{ fontSize: "12px" }}>
               Editar
             </Typography>
           </Button>
@@ -76,7 +76,7 @@ const MenuAction = ({
             aria-label="delete"
             startIcon={<DeleteIcon color="error" />}
           >
-            <Typography color="error" component="p"sx={{ fontSize: "12px" }}>
+            <Typography color="error" component={'span'} sx={{ fontSize: "12px" }}>
               Eliminar
             </Typography>
           </Button>

@@ -1,4 +1,5 @@
 import { Grid, makeStyles } from "@material-ui/core";
+import { Typography } from "@mui/material";
 import React from "react";
 const useStyles = makeStyles((theme) => ({
   gridItems: {
@@ -20,7 +21,9 @@ const Message = ({ msg, bgColor }) => {
   return (
     <Grid className={classes.gridItems} xs={12}>
       <div style={styles}>
-        <p>{msg}</p>
+        <Typography component={'span'} variant={'body2'}>
+          {msg}
+        </Typography>
       </div>
     </Grid>
   );
