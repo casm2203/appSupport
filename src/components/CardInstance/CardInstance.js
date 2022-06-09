@@ -193,7 +193,7 @@ const CardInstance = ({ id, name, token, api_url, movil, client, setDataToEdit, 
                 <RefreshIcon />
               </IconButton> }
           </Grid>
-          {!sesionActiva.email && (<Grid>
+          {sesionActiva.email && (<Grid>
             <MenuAction
               item={{ id, name, token, api_url, movil, client }}
               setDataToEdit={setDataToEdit}
