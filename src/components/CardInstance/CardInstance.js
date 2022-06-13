@@ -87,9 +87,7 @@ const CardInstance = ({ id, name, token, api_url, movil, client, setDataToEdit, 
   const [status, setStatus] = useState('loading');
   const [openAlert, setOpenAlert] = useState(false);
 
-  // const handleExpandClick = () => {
-  //   setExpanded(!expanded);
-  // };
+ 
 
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
@@ -106,7 +104,7 @@ const CardInstance = ({ id, name, token, api_url, movil, client, setDataToEdit, 
   }, [api_url, token]);
 
 
-
+  //Extrae el estado de la instacia
   const statusEquip = () => {
     switch (status) {
       case 'loading': return <CircularProgress size={20} color="inherit" />;
@@ -117,6 +115,7 @@ const CardInstance = ({ id, name, token, api_url, movil, client, setDataToEdit, 
     }
   }
 
+  //Envia un mensaje desde la isntancia hacía el usuario logeado
   const handleSendMessage = () => {
     const date = new Date();
     axios.post(`${api_url}sendMessage?token=${token}`, {
@@ -130,8 +129,8 @@ const CardInstance = ({ id, name, token, api_url, movil, client, setDataToEdit, 
     })
   }
 
+  //Reinicia la instancia
   const handleRestart = () => {
-
     axios.post(`${api_url}reboot?token=${token}`).then(res => {
       console.log("res:", res.data);
       if (res.data.sent) setOpenAlert(true);
@@ -140,6 +139,7 @@ const CardInstance = ({ id, name, token, api_url, movil, client, setDataToEdit, 
     })
   }
 
+  //Cerrar la instancia
   const handleCloseAlert = (event, reason) => {
     if (reason === 'clickaway') {
       return;
@@ -149,9 +149,7 @@ const CardInstance = ({ id, name, token, api_url, movil, client, setDataToEdit, 
   };
 
   return (
-    //<Grid className={classes.content}>
-
-    <Grid key={id} sx={{ marginTop: "15px", display: "flex", justifyContent:"center" }} item xs={12} sm={6} md={4} lg={3} xl={2}>
+    <Grid key={id} sx={{ marginTop: "15px", display: "flex", justifyContent: "center", marginButtom: "50px" }} item xs={12} sm={6} md={4} lg={3} xl={2}>
       <Card sx={{ maxWidth: 250, width: 300 }}>
         <CardMedia
           component="img"
@@ -189,9 +187,10 @@ const CardInstance = ({ id, name, token, api_url, movil, client, setDataToEdit, 
         <CardActions sx={{ display: "flex", justifyContent: "space-between" }}>
           <Grid sx={{ display: "flex", alignItems: "center" }} >
             {statusEquip()}
-            { <IconButton onClick={handleRestart} aria-label="send" >
-                <RefreshIcon />
-              </IconButton> }
+            {sesionActiva.email && (<IconButton onClick={handleRestart} aria-label="send" >
+              <RefreshIcon />
+            </IconButton>)}
+
           </Grid>
           {sesionActiva.email && (<Grid>
             <MenuAction
@@ -220,7 +219,6 @@ const CardInstance = ({ id, name, token, api_url, movil, client, setDataToEdit, 
           <Typography variant="body2" color="text.secondary">
             <b>API URL:</b>  {api_url}
           </Typography>
-
           <Typography variant="body2" color="text.secondary">
             <b>Token:</b> {token}
           </Typography>
@@ -229,7 +227,6 @@ const CardInstance = ({ id, name, token, api_url, movil, client, setDataToEdit, 
               target="_blank"
               rel="noreferrer">{`https://api.whatsapp.com/send?phone=${movil}`}</a>
           </Typography>
-
           <Typography variant="body2" color="text.secondary">
             <b>Movil:</b> {movil}
           </Typography>
@@ -241,9 +238,6 @@ const CardInstance = ({ id, name, token, api_url, movil, client, setDataToEdit, 
         </Alert>
       </Snackbar>
     </Grid>
-
-    //</Grid>
-
   );
 }
 

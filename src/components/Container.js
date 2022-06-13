@@ -3,8 +3,6 @@ import { styled } from '@mui/material/styles';
 import { Routes, Route } from 'react-router-dom';
 import Box from '@mui/material/Box';
 import CssBaseline from '@mui/material/CssBaseline';
-//import Cardinstances from "./Cardinstances/Cardinstances"
-//import CardClient from "./CardClient/CardClient"
 import Client from "./Client/Client"
 import SideBar from './SideBar/SideBar';
 import Form from './Form/Form';
@@ -49,9 +47,7 @@ const Container = () => {
         ...doc.data(),
         id: doc.id,
       }));
-
       setDbs(arrayDatas);
-
     });
   }, []);
 
@@ -101,12 +97,26 @@ const Container = () => {
           console.log("res:", res.data);
         }).catch(err => {
         });
-        console.log(element.movil, "envio envio")
-      }, i * 1000);
+      }, i * 10000);
     })
   }
 
-  //filtrado
+  //api importar datos
+
+  // const getApis = async () => {
+  //   const resp = await api.get(url);
+  //   await resp.forEach(element => {
+  //     addDoc(collection(db, "testPost"), element);
+  //   });
+  // }
+
+
+  //Busqueda de instancia
+  const searcher = (e) => {
+    setSearch(e.target.value)
+  }
+
+  //filtrado de instancias
   let results = [];
   if (!search) {
     results = dbs;
@@ -115,15 +125,9 @@ const Container = () => {
       dato.name.toLowerCase().includes(search.toLocaleLowerCase()));
   }
 
-  const searcher = (e) => {
-    setSearch(e.target.value)
-  }
-
-
   return (
 
     <Box sx={{ display: 'flex' }}>
-      {console.log(dbs, "consulta dbs")}
       <CssBaseline />
       <SideBar />
       <Box component="main" sx={{ flexGrow: 1, p: 3 }}>
@@ -141,7 +145,6 @@ const Container = () => {
               testGlobal={testGlobal}
             />}
           />
-          {/* <Route exact path="/" element={<SignUp />} /> */}
           <Route exact path="/agregar" element={
             <Form
               createData={createData}
